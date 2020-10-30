@@ -46,7 +46,7 @@ func (s *StandAloneStorage) Write(ctx *kvrpcpb.Context, batch []storage.Modify) 
 	// Your Code Here (1).
 	var err error
 	for _, m := range batch {
-		switch data := m.Data.(type)  {
+		switch data := m.Data.(type) {
 		case storage.Put:
 			err = engine_util.PutCF(s.engine.Kv, data.Cf, data.Key, data.Value)
 			if err != nil {
@@ -86,5 +86,3 @@ func (s *StorageReader) IterCF(cf string) engine_util.DBIterator {
 
 func (s *StorageReader) Close() {
 }
-
-
